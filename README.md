@@ -29,9 +29,15 @@ Welcome to the official download hub for **Space Tides**! Choose your preferred 
 
 ---
 
-## 📖 Game Lore & Official Wiki
+## 📖 Game Lore & Factions
 
-Want to master ship archetypes, weapon synergies, and the lore behind the oscillating cosmic tides? Visit the **[Space Tides Official Wiki](https://github.com/gmichelucci/space-tides-releases/wiki)**.
+At the center of a millenary war lies the **"Neutral Beast"** — the ancient Queen of a near-extinct species whose worker drones tear through star systems. Three ideological forces battle for dominance over this cosmic secret:
+
+* ☀️ **Solaris Dynasty**: A slaveholder empire worshiping the Beast as a Creator God, relying on massive brute-force fleets and biological continuous plasma beams.
+* 💠 **Nexus Collective**: A ruthless mercantile-scientific elite who reverse-engineered the Queen's drones to create regenerative shields and precision guided missiles.
+* 🏴‍☠️ **Outland Alliance**: High-speed scrap-built rebel ships armed with kinetic cannons, secretly protecting the bloodline of their martyr prince.
+
+Explore the full narrative and ship synergies on the **[Space Tides Official Wiki](https://github.com/gmichelucci/space-tides-releases/wiki)**.
 
 ---
 
