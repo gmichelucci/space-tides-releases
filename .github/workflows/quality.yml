@@ -1,0 +1,24 @@
+name: Quality & Release Health Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-health:
+    name: Repository & Release Integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Markdown and Documentation
+        run: |
+          echo "Validating README and Security files..."
+          test -f README.md || (echo "README.md missing" && exit 1)
+          test -f .github/SECURITY.md || (echo "SECURITY.md missing" && exit 1)
+          echo "All critical health files present and verified."
