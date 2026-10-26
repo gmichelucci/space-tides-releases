@@ -1,0 +1,60 @@
+{
+	"releases": [
+		{
+			"version": "v0.1.56",
+			"title": "Pre-Login Update Enforcer & Offline Mode Lock",
+			"patch_notes": ">> Pre-Login Update Prompt: Update check triggers strictly before login so gameplay and menus are never interrupted.\n>> Main Menu Clean Up: Removed lingering update buttons from the main menu.\n>> Offline-Only Protection: Players who skip an update can still access offline modes (Vs. AI, Deck Builder, Implants, Store), while online matchmaking is locked until the game is restarted and updated.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.56/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.56/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-26"
+		},
+		{
+			"version": "v0.1.55",
+			"title": "Quantum Warhead 5x, Nexus Overhaul & 8 New Implants",
+			"patch_notes": ">> Gorgon Dreadfront Lv3 Perk: Reflects 25% of damage taken directly back to attacker at any range.\n>> Quantum Warhead Buff: Damage multiplied by 5x with 100% mitigation penetration and standard ship death explosion.\n>> Nexus Faction 1.2x Buff: Shield capacity and direct damage multiplied by 1.2x across all 15 Nexus vessels.\n>> Orbital Plasma Beam: Thermal beam now strictly damages hostile warships, bypassing Citadels and Turrets.\n>> Sentry Protocol Renamed: Renamed to Overcharge Protocol with updated combat notifications.\n>> Archer Balancing: Reduced hull armor slightly for tactical brawler counter-play.\n>> Hyper-Focal Lens: Range implant bonus now applies unconditionally to all ships.\n>> 8 New Implants: Expanded module roster to 32 implants across all 4 slots.\n>> Passive Regen Nerf & Buff Icon Fix: Nerfed regenerative composite and prevented passive implants from displaying in-combat buff symbols.\n>> Kamikaze Polish: Removed AoE tooltip text and scaled impact damage with kamikaze ship's max health.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.55/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.55/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-26"
+		},
+		{
+			"version": "v0.1.54",
+			"title": "In-App Mobile Auto-Patching & Delta Patch System",
+			"patch_notes": ">> In-App Mobile Patch Downloader: Updates on Android now download with an integrated progress bar directly inside the APK without opening the browser.\n>> Lightweight Delta Updates: PC launcher and mobile now download only what changed (~500 KB delta patch) instead of re-downloading the entire ~200 MB game.\n>> Fast Engine Patch Mounting: Runtime .pck overlay system seamlessly loads differential patches on game start on both Desktop and Mobile.\n>> Windows Desktop Launcher Sync: Launcher extracts delta patch to local game directory instantly.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.54/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.54/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-26"
+		},
+		{
+			"version": "v0.1.42",
+			"title": "Mobile UI & Tactical Touch Controls Mode",
+			"patch_notes": ">> Mobile UI Mode: Complete touch-adapted interface with enlarged text, touch targets, and landscape lock.\n>> Tactical Command Dock: Dedicated Confirm & Cancel controls on the left of the deck UI for safe ship requisitions, tech upgrades, and skill activations.\n>> UI Mode Switcher: Added 'Interface & Control Mode' option under Settings (Auto / Desktop / Mobile) allowing players to test and toggle anytime.\n>> Android APK Release: Native Android APK build published for direct mobile installation.\n>> Zero Desktop Impact: Desktop PC and Web modes remain 100% untouched with instant click actions and hover tooltips.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.42/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.42/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-24"
+		},
+		{
+			"version": "v0.1.41",
+			"title": "Store & Menu Performance Optimization (60 FPS UI)",
+			"patch_notes": ">> Store & Menu Optimization: Eliminated FPS drops and stutters in Store, Main Menu, Deck Builder, and Implants Menu.\n>> Cloud Sync Debouncing: Coalesced profile saves and eliminated redundant HTTP calls during 10x Supply Cache requisitions.\n>> O(1) Resource & Signal Management: Removed per-frame label reshaping, mouse-input scene tree scans, and leaked signal callbacks.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.41/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.41/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-24"
+		},
+		{
+			"version": "v0.1.40",
+			"title": "Windows Desktop Launcher & 200+ Ships 60 FPS Optimization",
+			"patch_notes": ">> Official Windows Desktop Release & Auto-Updating Launcher connected to Supabase.\n>> Massive 60 FPS Fleet Optimization (200+ Ships on Grid): O(N) spatial hash separation, zero-allocation target acquisition, and tiered LOD rendering.\n>> Visual & Shader Culling: Automatic hull shader & aura emitter LOD above 80 active ships with zero impact on combat mechanics.\n>> Weapon & VFX Pooling: Eliminated per-shot scene allocations and tree scans across cannons, missiles, and plasma beams.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.40/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.40/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-24"
+		},
+		{
+			"version": "v0.1.39",
+			"title": "Outland Heavy Alpha & Cloaking Fixes",
+			"patch_notes": ">> Outland Battlecruisers: Increased alpha strike damage (+25%) and adjusted fire rate for heavy artillery identity.\n>> Stealth & Cloaking Fix: Cloaked frigates no longer reveal their position or trigger retaliatory fire while firing cloaked.\n>> Online Economy Fix: Resolved Guest kill-bounty synchronization edge case in multiplayer matches.\n>> Store & Checkout: Direct Stripe checkout tab launch and improved Noto Sans Symbols 2 support.",
+			"full_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.40/SpaceTides_Win64.zip",
+			"pck_zip_url": "https://github.com/gmichelucci/space-tides-releases/releases/download/v0.1.40/SpaceTides_Patch_pck.zip",
+			"published_at": "2026-10-23"
+		}
+	]
+}
