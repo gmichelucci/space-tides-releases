@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Space Tides // Pilot Authentication</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at center, #091326 0%, #030712 100%);
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid #38bdf8;
+      box-shadow: 0 0 50px rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      padding: 40px 28px;
+      max-width: 440px;
+      width: 100%;
+    }
+    .icon-container {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.1);
+      border: 2px solid #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+    }
+    .icon-container svg {
+      width: 36px;
+      height: 36px;
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    h1 {
+      color: #38bdf8;
+      font-size: 22px;
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+    .status {
+      color: #4ade80;
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 12px #4ade80;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    .message {
+      color: #f1f5f9;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .return-prompt {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed rgba(56, 189, 248, 0.5);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #38bdf8;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 20px;
+    }
+    .subtext {
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon-container">
+      <svg viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"/>
+      </svg>
+    </div>
+    <h1>// SPACE TIDES //</h1>
+    <div class="status" id="statusLine"><span class="pulse"></span>PILOT AUTHENTICATED</div>
+    <p class="message" id="msgLine">Your Google credentials have been synchronized with fleet command.</p>
+    <div class="return-prompt" id="returnPrompt">🚀 You can now return to Space Tides.</div>
+    <div class="subtext">You can safely close this browser window.</div>
+  </div>
+
+  <script>
+    (function() {
+      var searchParams = new URLSearchParams(window.location.search);
+      var sessionId = searchParams.get("st_sess") || "";
+      var rawHash = window.location.hash || window.location.search || "";
+      var cleanHash = rawHash.replace(/^[#?]/, "");
+      var hashParams = new URLSearchParams(cleanHash);
+      var accessToken = hashParams.get("access_token") || "";
+      var refreshToken = hashParams.get("refresh_token") || "";
+
+      // 1. Upload tokens to Supabase cloud handshake immediately
+      if (sessionId && accessToken && refreshToken) {
+        fetch("https://pnqolpnhqtifkeankaok.supabase.co/rest/v1/auth_handshake", {
+          method: "POST",
+          headers: {
+            "apikey": "sb_publishable_iH-GWOZpazaVKGZPw4_-zg_sQOnas60",
+            "Authorization": "Bearer sb_publishable_iH-GWOZpazaVKGZPw4_-zg_sQOnas60",
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            access_token: accessToken,
+            refresh_token: refreshToken
+          })
+        }).catch(function(err) {
+          console.warn("Handshake upload note:", err);
+        });
+      }
+
+      // 2. Web BroadcastChannel & Opener for Web/HTML5 builds
+      try {
+        var bc = new BroadcastChannel("space_tides_auth");
+        bc.postMessage({ type: "SPACE_TIDES_AUTH", hash: rawHash });
+      } catch(e) {}
+
+      if (window.opener) {
+        try {
+          window.opener.postMessage({ type: "SPACE_TIDES_AUTH", hash: rawHash }, "*");
+          setTimeout(function() { window.close(); }, 800);
+        } catch(e) {}
+      } else if (!/Android/i.test(navigator.userAgent)) {
+        setTimeout(function() {
+          try { window.close(); } catch(e) {}
+        }, 3000);
+      }
+    })();
+  </script>
+</body>
+</html>
